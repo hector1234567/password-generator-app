@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { PaswordGeneratorContext } from "../contexts";
 
 export default function RangeInput() {
-  const [range, setRange] = useState(10);
+  const { range, setRange } = useContext(PaswordGeneratorContext);
 
   return (
     <input
@@ -16,29 +17,7 @@ export default function RangeInput() {
           range * 5
         }%, var(--color-grey-950) ${range * 5}%)`,
       }}
-      className=" w-full h-2 rounded-lg appearance-none cursor-pointer
-    bg-grey-950 accent-amber-500
-
-    [&::-webkit-slider-thumb]:appearance-none
-    [&::-webkit-slider-thumb]:w-[28px]
-    [&::-webkit-slider-thumb]:h-[28px]
-    [&::-webkit-slider-thumb]:bg-white
-    [&::-webkit-slider-thumb]:hover:bg-grey-950
-    [&::-webkit-slider-thumb]:hover:border-2
-    [&::-webkit-slider-thumb]:hover:border-green-200
-    [&::-webkit-slider-thumb]:rounded-full
-    [&::-webkit-slider-thumb]:cursor-pointer
-
-    [&::-moz-range-thumb]:w-[28px]
-    [&::-moz-range-thumb]:h-[28px]
-    [&::-moz-range-thumb]:bg-white
-    [&::-moz-range-thumb]:hover:bg-grey-950
-    [&::-moz-range-thumb]:hover:border-2
-    [&::-moz-range-thumb]:hover:border-green-200
-    [&::-moz-range-thumb]:rounded-full
-    [&::-moz-range-thumb]:cursor-pointer
-    [&::-moz-range-thumb]:border-none
-    mb-[32px]"
+      className="[&::-webkit-slider-thumb]:hover:bg-grey-950 [&::-moz-range-thumb]:hover:bg-grey-950 mb-[32px] h-2 w-full cursor-pointer appearance-none rounded-lg accent-amber-500 transition-all [&::-moz-range-thumb]:h-[28px] [&::-moz-range-thumb]:w-[28px] [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-none [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:hover:border-2 [&::-moz-range-thumb]:hover:border-green-200 [&::-webkit-slider-thumb]:h-[28px] [&::-webkit-slider-thumb]:w-[28px] [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:hover:border-2 [&::-webkit-slider-thumb]:hover:border-green-200"
     />
   );
 }

@@ -1,32 +1,32 @@
 import CheckBox from "./components/checkBox";
 import GenerateButton from "./components/generateButton";
 import RangeInput from "./components/rangeInput";
+import { PaswordGeneratorContext } from "./contexts";
+import usePasswordGenerator from "./hooks/usePasswordGenerator";
+import CharacterLengthDisplay from "./layout/characterLengthDisplay";
+import IncludeOptions from "./layout/includeOptions";
 import { PasswordDisplay } from "./layout/passwordDisplay";
 import StrengthIndicator from "./layout/strenghtIndicator";
 
 function App() {
+  const passwordHook = usePasswordGenerator();
+
   return (
-    <div className="min-h-dvh bg-linear-to-r from-grey-900 to-grey-950 flex justify-center items-center font-sans">
-      <main className="max-w-112.5 w-full">
-        <h1 className="text-[16px] text-grey-600 mb-4 text-center">
+    <div className="from-grey-900 to-grey-950 flex min-h-dvh items-center justify-center bg-linear-to-r font-sans">
+      <main className="w-full max-w-112.5">
+        <h1 className="text-grey-600 mb-4 text-center text-[16px]">
           Password Generator
         </h1>
-        <PasswordDisplay />
-        <div className="bg-grey-800 p-4">
-          <div className="flex justify-between items-center mb-[16px]">
-            <p className="text-[16px] text-grey-200">Character Length</p>
-            <p className="text-[24px] text-green-200">0</p>
+        <PaswordGeneratorContext.Provider value={passwordHook}>
+          <PasswordDisplay />
+          <div className="bg-grey-800 p-4">
+            <CharacterLengthDisplay />
+            <RangeInput />
+            <IncludeOptions />
+            <StrengthIndicator />
+            <GenerateButton />
           </div>
-          <RangeInput />
-          <div className="mb-8">
-            <CheckBox label="Include Uppercase Letters" id="upper" />
-            <CheckBox label="Include Lowercase Letters" id="lower" />
-            <CheckBox label="Include Numbers" id="nums" />
-            <CheckBox label="Include Symbols" id="symb" />
-          </div>
-          <StrengthIndicator />
-          <GenerateButton />
-        </div>
+        </PaswordGeneratorContext.Provider>
       </main>
     </div>
   );

@@ -1,10 +1,10 @@
 export default function GenerateButton() {
   return (
-    <button className="bg-green-200 text-grey-800 uppercase w-full h-14 cursor-pointer flex justify-center items-center gap-4 border-0">
-      <span>Generate</span>
+    <button className="hover:bg-grey-800 group text-grey-800 flex h-14 w-full cursor-pointer items-center justify-center gap-4 border-2 border-green-200 bg-green-200 uppercase transition-colors">
+      <span className="group-hover:text-green-200">Generate</span>
       <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
         <path
-          className="fill-grey-800"
+          className="fill-grey-800 group-hover:fill-green-200"
           d="m5.106 12 6-6-6-6-1.265 1.265 3.841 3.84H.001v1.79h7.681l-3.841 3.84z"
         />
       </svg>

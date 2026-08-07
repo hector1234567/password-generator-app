@@ -3,30 +3,34 @@ import { useState } from "react";
 type CheckBoxProps = {
   label: string;
   id: string;
+  checked: boolean;
+  setChecked: () => void;
 };
 
-export default function CheckBox({ label, id }: CheckBoxProps) {
-  const [checked, setChecked] = useState(false);
-
+export default function CheckBox({
+  label,
+  id,
+  checked,
+  setChecked,
+}: CheckBoxProps) {
   return (
-    <div className="text-[16px] text-white mb-4.25 flex">
+    <div className="mb-4.25 flex text-[16px] text-white">
       <input
         type="checkbox"
         className="hidden"
         id={id}
         checked={checked}
-        onChange={() => setChecked((ch) => !ch)}
+        onChange={setChecked}
       />
-      <label htmlFor={id} className="cursor-pointer flex items-center gap-4">
-        <div className="w-5 h-5 border-2 border-green-200 flex justify-center items-center">
-          <svg
-            width="14"
-            height="12"
-            xmlns="http://www.w3.org/2000/svg"
-            className={`${!checked && "hidden"}`}
-          >
+      <label htmlFor={id} className="flex cursor-pointer items-center gap-4">
+        <div
+          className={`flex h-5 w-5 items-center justify-center border-2 border-green-200 transition-colors ${
+            checked ? "bg-green-200" : "bg-grey-950"
+          }`}
+        >
+          <svg width="14" height="12" xmlns="http://www.w3.org/2000/svg">
             <path
-              className="stroke-green-200"
+              className="stroke-grey-950"
               stroke-width="3"
               fill="none"
               d="M1 5.607 4.393 9l8-8"
