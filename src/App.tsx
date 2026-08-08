@@ -1,4 +1,3 @@
-import CheckBox from "./components/checkBox";
 import GenerateButton from "./components/generateButton";
 import RangeInput from "./components/rangeInput";
 import { PaswordGeneratorContext } from "./contexts";
@@ -13,8 +12,8 @@ function App() {
 
   return (
     <div className="from-grey-900 to-grey-950 flex min-h-dvh items-center justify-center bg-linear-to-r font-sans">
-      <main className="mx-2 w-full max-w-112.5">
-        <h1 className="text-grey-600 mb-4 text-center text-[16px]">
+      <main className="m-2 w-full max-w-112.5 sm:m-4 sm:max-w-135">
+        <h1 className="text-grey-600 mb-4 text-center text-[16px] sm:mb-8 sm:text-[24px]">
           Password Generator
         </h1>
         <PaswordGeneratorContext.Provider value={passwordHook}>

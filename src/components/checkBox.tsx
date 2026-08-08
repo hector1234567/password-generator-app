@@ -14,7 +14,7 @@ export default function CheckBox({
   setChecked,
 }: CheckBoxProps) {
   return (
-    <div className="mb-4.25 flex text-[16px] text-white">
+    <div className="mb-4.25 flex text-[16px] text-white sm:text-[18px]">
       <input
         type="checkbox"
         className="hidden"

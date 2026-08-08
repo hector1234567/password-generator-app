@@ -23,9 +23,13 @@ export default function StrengthIndicator() {
   const levelText = ["", "Too Weak!", "Weak", "Medium", "Strong"];
 
   return (
-    <div className="bg-grey-850 mb-4 flex h-14 items-center gap-4 px-4 py-3.5">
-      <p className="text-grey-600 mr-auto text-[16px] uppercase">Strength</p>
-      <p className="text-[18px] text-white uppercase">{levelText[level]}</p>
+    <div className="bg-grey-850 mb-4 flex h-14 items-center gap-4 px-4 py-3.5 sm:mb-8 sm:h-18 sm:px-8 sm:py-5">
+      <p className="text-grey-600 mr-auto text-[16px] uppercase sm:text-[18px]">
+        Strength
+      </p>
+      <p className="text-[18px] text-white uppercase sm:text-[24px]">
+        {levelText[level]}
+      </p>
       <div className="flex h-full gap-2">
         <div
           className={`h-full w-2.5 ${level > 0 ? color : "border-2 border-white"}`}

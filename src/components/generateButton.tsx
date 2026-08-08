@@ -6,7 +6,7 @@ export default function GenerateButton() {
 
   return (
     <button
-      className="hover:bg-grey-800 group text-grey-800 flex h-14 w-full cursor-pointer items-center justify-center gap-4 border-2 border-green-200 bg-green-200 uppercase transition-colors"
+      className="hover:bg-grey-800 group text-grey-800 flex h-14 w-full cursor-pointer items-center justify-center gap-4 border-2 border-green-200 bg-green-200 text-[16px] uppercase transition-colors sm:text-[18px]"
       onClick={generatePassword}
     >
       <span className="group-hover:text-green-200">Generate</span>
