@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { PaswordGeneratorContext } from "../contexts";
+import { usePasswordGeneratorContext } from "../contexts";
 
 export default function CharacterLengthDisplay() {
-  const { range } = useContext(PaswordGeneratorContext);
+  const { range } = usePasswordGeneratorContext();
 
   return (
     <div className="mb-4 flex items-center justify-between">

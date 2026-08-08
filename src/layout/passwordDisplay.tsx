@@ -1,8 +1,8 @@
-import { useContext, useState } from "react";
-import { PaswordGeneratorContext } from "../contexts";
+import { useState } from "react";
+import { usePasswordGeneratorContext } from "../contexts";
 
 export function PasswordDisplay() {
-  const { password, entropy } = useContext(PaswordGeneratorContext);
+  const { password } = usePasswordGeneratorContext();
 
   const [copied, setCopied] = useState(false);
 

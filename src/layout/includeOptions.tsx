@@ -1,6 +1,5 @@
-import { useContext } from "react";
 import CheckBox from "../components/checkBox";
-import { PaswordGeneratorContext } from "../contexts";
+import { usePasswordGeneratorContext } from "../contexts";
 
 export default function IncludeOptions() {
   const {
@@ -12,7 +11,7 @@ export default function IncludeOptions() {
     setIncludeNumbers,
     includeSymbols,
     setIncludeSymbols,
-  } = useContext(PaswordGeneratorContext);
+  } = usePasswordGeneratorContext();
 
   return (
     <div className="mb-8">

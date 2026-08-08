@@ -1,14 +1,30 @@
-import { useState } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 
-export default function usePasswordGenerator() {
-  const [range, setRange] = useState(10);
+export interface UsePasswordGeneratorReturn {
+  range: number;
+  setRange: Dispatch<SetStateAction<number>>;
+  includeUppercase: boolean;
+  setIncludeUppercase: Dispatch<SetStateAction<boolean>>;
+  includeLowercase: boolean;
+  setIncludeLowercase: Dispatch<SetStateAction<boolean>>;
+  includeNumbers: boolean;
+  setIncludeNumbers: Dispatch<SetStateAction<boolean>>;
+  includeSymbols: boolean;
+  setIncludeSymbols: Dispatch<SetStateAction<boolean>>;
+  entropy: number;
+  password: string;
+  generatePassword: () => void;
+}
 
-  const [includeUppercase, setIncludeUppercase] = useState(false);
-  const [includeLowercase, setIncludeLowercase] = useState(false);
-  const [includeNumbers, setIncludeNumbers] = useState(false);
-  const [includeSymbols, setIncludeSymbols] = useState(false);
+export default function usePasswordGenerator(): UsePasswordGeneratorReturn {
+  const [range, setRange] = useState<number>(10);
 
-  const [password, setPassword] = useState("");
+  const [includeUppercase, setIncludeUppercase] = useState<boolean>(false);
+  const [includeLowercase, setIncludeLowercase] = useState<boolean>(false);
+  const [includeNumbers, setIncludeNumbers] = useState<boolean>(false);
+  const [includeSymbols, setIncludeSymbols] = useState<boolean>(false);
+
+  const [password, setPassword] = useState<string>("");
 
   let n = 0;
   if (includeUppercase) n += 26;
@@ -16,22 +32,27 @@ export default function usePasswordGenerator() {
   if (includeNumbers) n += 10;
   if (includeSymbols) n += 32;
 
-  const entropy = range * Math.log2(n);
+  const entropy: number = range * Math.log2(n);
 
-  function generatePassword() {
+  function generatePassword(): void {
     let charset = "";
     if (includeUppercase) charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     if (includeLowercase) charset += "abcdefghijklmnopqrstuvwxyz";
     if (includeNumbers) charset += "0123456789";
     if (includeSymbols) charset += "!@#$%^&*()-_=+[]{}";
 
-    const password = [];
-    for (let i = 0; i < range; i++) {
-      const charIndex = Math.floor(Math.random() * charset.length);
-      password.push(charset[charIndex]);
+    if (charset.length === 0) {
+      setPassword("");
+      return;
     }
 
-    setPassword(password.join(""));
+    const generated: string[] = [];
+    for (let i = 0; i < range; i++) {
+      const charIndex = Math.floor(Math.random() * charset.length);
+      generated.push(charset[charIndex]);
+    }
+
+    setPassword(generated.join(""));
   }
 
   return {

@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 type CheckBoxProps = {
   label: string;
   id: string;

@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { PaswordGeneratorContext } from "../contexts";
+import { usePasswordGeneratorContext } from "../contexts";
 
 export default function RangeInput() {
-  const { range, setRange } = useContext(PaswordGeneratorContext);
+  const { range, setRange } = usePasswordGeneratorContext();
 
   return (
     <input

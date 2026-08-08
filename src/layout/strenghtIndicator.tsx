@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { PaswordGeneratorContext } from "../contexts";
+import { usePasswordGeneratorContext } from "../contexts";
 
 export default function StrengthIndicator() {
-  const { entropy } = useContext(PaswordGeneratorContext);
+  const { entropy } = usePasswordGeneratorContext();
 
   let level = 0; // Invalid
   let color = "";

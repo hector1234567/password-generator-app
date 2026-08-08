@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { PaswordGeneratorContext } from "../contexts";
+import { usePasswordGeneratorContext } from "../contexts";
 
 export default function GenerateButton() {
-  const { generatePassword } = useContext(PaswordGeneratorContext);
+  const { generatePassword } = usePasswordGeneratorContext();
 
   return (
     <button
