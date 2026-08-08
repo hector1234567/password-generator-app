@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div className="from-grey-900 to-grey-950 flex min-h-dvh items-center justify-center bg-linear-to-r font-sans">
-      <main className="w-full max-w-112.5">
+      <main className="mx-2 w-full max-w-112.5">
         <h1 className="text-grey-600 mb-4 text-center text-[16px]">
           Password Generator
         </h1>

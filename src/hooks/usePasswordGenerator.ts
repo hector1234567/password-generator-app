@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function usePasswordGenerator() {
   const [range, setRange] = useState(10);
@@ -8,26 +8,31 @@ export default function usePasswordGenerator() {
   const [includeNumbers, setIncludeNumbers] = useState(false);
   const [includeSymbols, setIncludeSymbols] = useState(false);
 
-  const [entropy, setEntropy] = useState(-Infinity);
+  const [password, setPassword] = useState("");
 
-  useEffect(() => {
-    function calcEntropy() {
-      let n = 0;
-      if (includeUppercase) n += 26;
-      if (includeLowercase) n += 26;
-      if (includeNumbers) n += 10;
-      if (includeSymbols) n += 32;
+  let n = 0;
+  if (includeUppercase) n += 26;
+  if (includeLowercase) n += 26;
+  if (includeNumbers) n += 10;
+  if (includeSymbols) n += 32;
 
-      setEntropy(range * Math.log2(n));
+  const entropy = range * Math.log2(n);
+
+  function generatePassword() {
+    let charset = "";
+    if (includeUppercase) charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    if (includeLowercase) charset += "abcdefghijklmnopqrstuvwxyz";
+    if (includeNumbers) charset += "0123456789";
+    if (includeSymbols) charset += "!@#$%^&*()-_=+[]{}";
+
+    const password = [];
+    for (let i = 0; i < range; i++) {
+      const charIndex = Math.floor(Math.random() * charset.length);
+      password.push(charset[charIndex]);
     }
-    calcEntropy();
-  }, [
-    range,
-    includeUppercase,
-    includeLowercase,
-    includeNumbers,
-    includeSymbols,
-  ]);
+
+    setPassword(password.join(""));
+  }
 
   return {
     range,
@@ -41,5 +46,7 @@ export default function usePasswordGenerator() {
     includeSymbols,
     setIncludeSymbols,
     entropy,
+    password,
+    generatePassword,
   };
 }

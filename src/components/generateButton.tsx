@@ -1,6 +1,14 @@
+import { useContext } from "react";
+import { PaswordGeneratorContext } from "../contexts";
+
 export default function GenerateButton() {
+  const { generatePassword } = useContext(PaswordGeneratorContext);
+
   return (
-    <button className="hover:bg-grey-800 group text-grey-800 flex h-14 w-full cursor-pointer items-center justify-center gap-4 border-2 border-green-200 bg-green-200 uppercase transition-colors">
+    <button
+      className="hover:bg-grey-800 group text-grey-800 flex h-14 w-full cursor-pointer items-center justify-center gap-4 border-2 border-green-200 bg-green-200 uppercase transition-colors"
+      onClick={generatePassword}
+    >
       <span className="group-hover:text-green-200">Generate</span>
       <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
         <path
