@@ -7,7 +7,7 @@
 }
 
 @theme {
-  --font-sans: "JetBrains mono", serif;
+  --font-sans: "JetBrains mono", sans-serif;
 
   --color-grey-950: #08070b;
   --color-grey-900: #14131b;
