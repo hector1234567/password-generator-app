@@ -16,6 +16,13 @@ export interface UsePasswordGeneratorReturn {
   generatePassword: () => void;
 }
 
+const includedChars = {
+  uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  lowercase: "abcdefghijklmnopqrstuvwxyz",
+  numbers: "0123456789",
+  symbols: "!@#$%^&*()-_=+[]{}|;:,.<>?",
+};
+
 export default function usePasswordGenerator(): UsePasswordGeneratorReturn {
   const [range, setRange] = useState<number>(10);
 
@@ -27,19 +34,19 @@ export default function usePasswordGenerator(): UsePasswordGeneratorReturn {
   const [password, setPassword] = useState<string>("");
 
   let n = 0;
-  if (includeUppercase) n += 26;
-  if (includeLowercase) n += 26;
-  if (includeNumbers) n += 10;
-  if (includeSymbols) n += 32;
+  if (includeUppercase) n += includedChars.uppercase.length;
+  if (includeLowercase) n += includedChars.lowercase.length;
+  if (includeNumbers) n += includedChars.numbers.length;
+  if (includeSymbols) n += includedChars.symbols.length;
 
   const entropy: number = range * Math.log2(n);
 
   function generatePassword(): void {
     let charset = "";
-    if (includeUppercase) charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    if (includeLowercase) charset += "abcdefghijklmnopqrstuvwxyz";
-    if (includeNumbers) charset += "0123456789";
-    if (includeSymbols) charset += "!@#$%^&*()-_=+[]{}";
+    if (includeUppercase) charset += includedChars.uppercase;
+    if (includeLowercase) charset += includedChars.lowercase;
+    if (includeNumbers) charset += includedChars.numbers;
+    if (includeSymbols) charset += includedChars.symbols;
 
     if (charset.length === 0) {
       setPassword("");
