@@ -46,9 +46,12 @@ export default function usePasswordGenerator(): UsePasswordGeneratorReturn {
       return;
     }
 
+    const randomValues = new Uint32Array(range);
+    crypto.getRandomValues(randomValues);
+
     const generated: string[] = [];
     for (let i = 0; i < range; i++) {
-      const charIndex = Math.floor(Math.random() * charset.length);
+      const charIndex = randomValues[i] % charset.length;
       generated.push(charset[charIndex]);
     }
 
