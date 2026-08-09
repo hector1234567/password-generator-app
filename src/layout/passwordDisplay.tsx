@@ -34,6 +34,7 @@ export function PasswordDisplay() {
       <button
         className="group w-[21px] shrink-0 cursor-pointer"
         onClick={handleCopy}
+        type="button"
       >
         <svg width="21" height="24" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -41,7 +42,7 @@ export function PasswordDisplay() {
             className="h-5 fill-green-200 group-hover:fill-white"
           />
         </svg>
-        <span className="hidden">Copy</span>
+        <span className="sr-only">Copy</span>
       </button>
     </div>
   );

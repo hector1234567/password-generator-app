@@ -15,12 +15,15 @@ export default function CheckBox({
     <div className="mb-4.25 flex text-[16px] text-white sm:text-[18px]">
       <input
         type="checkbox"
-        className="hidden"
+        className="peer sr-only"
         id={id}
         checked={checked}
         onChange={setChecked}
       />
-      <label htmlFor={id} className="flex cursor-pointer items-center gap-4">
+      <label
+        htmlFor={id}
+        className="flex cursor-pointer items-center gap-4 peer-focus:ring-2 peer-focus:ring-green-200"
+      >
         <div
           className={`flex h-5 w-5 items-center justify-center border-2 border-green-200 transition-colors ${
             checked ? "bg-green-200" : "bg-grey-950"
