@@ -16,6 +16,11 @@ export interface UsePasswordGeneratorReturn {
   generatePassword: () => void;
 }
 
+function haveCommonChar(a: string, b: string): boolean {
+  const setA = new Set(a);
+  return [...b].some((char) => setA.has(char));
+}
+
 const includedChars = {
   uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
   lowercase: "abcdefghijklmnopqrstuvwxyz",
@@ -53,16 +58,28 @@ export default function usePasswordGenerator(): UsePasswordGeneratorReturn {
       return;
     }
 
-    const randomValues = new Uint32Array(range);
-    crypto.getRandomValues(randomValues);
+    let generated = "";
+    while (!generated.length) {
+      const randomValues = new Uint32Array(range);
+      crypto.getRandomValues(randomValues);
 
-    const generated: string[] = [];
-    for (let i = 0; i < range; i++) {
-      const charIndex = randomValues[i] % charset.length;
-      generated.push(charset[charIndex]);
+      for (let i = 0; i < range; i++) {
+        const charIndex = randomValues[i] % charset.length;
+        generated += charset[charIndex];
+      }
+
+      if (
+        (includeUppercase &&
+          !haveCommonChar(generated, includedChars.uppercase)) ||
+        (includeLowercase &&
+          !haveCommonChar(generated, includedChars.lowercase)) ||
+        (includeNumbers && !haveCommonChar(generated, includedChars.numbers)) ||
+        (includeSymbols && !haveCommonChar(generated, includedChars.symbols))
+      )
+        generated = "";
     }
 
-    setPassword(generated.join(""));
+    setPassword(generated);
   }
 
   return {
