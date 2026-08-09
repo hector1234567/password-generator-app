@@ -19,10 +19,10 @@ export interface UsePasswordGeneratorReturn {
 export default function usePasswordGenerator(): UsePasswordGeneratorReturn {
   const [range, setRange] = useState<number>(10);
 
-  const [includeUppercase, setIncludeUppercase] = useState<boolean>(false);
-  const [includeLowercase, setIncludeLowercase] = useState<boolean>(false);
-  const [includeNumbers, setIncludeNumbers] = useState<boolean>(false);
-  const [includeSymbols, setIncludeSymbols] = useState<boolean>(false);
+  const [includeUppercase, setIncludeUppercase] = useState<boolean>(true);
+  const [includeLowercase, setIncludeLowercase] = useState<boolean>(true);
+  const [includeNumbers, setIncludeNumbers] = useState<boolean>(true);
+  const [includeSymbols, setIncludeSymbols] = useState<boolean>(true);
 
   const [password, setPassword] = useState<string>("");
 

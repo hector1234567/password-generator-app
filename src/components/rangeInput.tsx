@@ -7,7 +7,7 @@ export default function RangeInput() {
     <>
       <input
         type="range"
-        min="0"
+        min="1"
         max="20"
         step="1"
         id="range"

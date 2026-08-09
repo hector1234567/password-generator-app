@@ -22,7 +22,7 @@ export default function CheckBox({
       />
       <label
         htmlFor={id}
-        className="flex cursor-pointer items-center gap-4 peer-focus:ring-2 peer-focus:ring-green-200"
+        className="flex cursor-pointer items-center gap-4 peer-focus:underline"
       >
         <div
           className={`flex h-5 w-5 items-center justify-center border-2 border-green-200 transition-colors ${
@@ -38,7 +38,7 @@ export default function CheckBox({
             />
           </svg>
         </div>
-        <span>{label}</span>
+        <span className="">{label}</span>
       </label>
     </div>
   );
